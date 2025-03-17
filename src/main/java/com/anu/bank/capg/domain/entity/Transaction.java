@@ -7,6 +7,16 @@ public class Transaction {
     private double amount;
     private String timestamp;
 
+    public Transaction(long id, long accountId, double amount) {
+        this.id = id;
+        this.accountId = accountId;
+        this.amount = amount;
+    }
+
+    public Transaction() {
+
+    }
+
 
     public Long getId() {
         return id;
