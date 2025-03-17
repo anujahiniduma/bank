@@ -46,5 +46,5 @@ jobs:
 
       - name: Push Docker Image
         run: |
-          docker tag myapp:${{ github.sha }} anujahiniduma@gmail.com/myapp:latest
-          docker push anujahiniduma@gmail.com/myapp:latest
+          docker tag myapp:${{ github.sha }} anujahiniduma@gmail.com/app:latest
+          docker push anujahiniduma@gmail.com/app:latest
