@@ -26,7 +26,7 @@ jobs:
           cache: maven
 
       - name: Build with Maven
-        run: mvn clean package -DskipTests=false
+        run: ./
 
       - name: Run Unit Tests with JaCoCo Coverage
         run: mvn test jacoco:report
