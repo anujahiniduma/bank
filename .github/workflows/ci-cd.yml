@@ -46,4 +46,4 @@ jobs:
 
       - name: Push Docker Image
         run: |
-          docker push anu/myapp:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/myapp:latest
