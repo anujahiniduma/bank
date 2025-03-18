@@ -64,15 +64,8 @@ http://localhost:8080/swagger-ui.html
 
 *Account Management*
 
-* *POST* /api/accounts - Create a new account
-* *GET* /api/users/\{customerId} - Retrieve user details including
-balance and transactions
-
-*Transactions*
-
-* *POST* /api/transactions - Create a transaction
-* *GET* /api/transactions/\{accountId} - Get transaction history for an
-account
+* *POST* api/v1/customers/1/accounts - Create a new account
+* *GET* /api/v1/customers/\{customerId} - Retrieve user details including
 
 *Spring Boot Actuator Endpoints*
 
@@ -92,5 +85,5 @@ Reports will be available in:
 
 target/site/jacoco/index.html
 
-image:vertopal_72c7024537b7459aa2ac7d2df57d76e2/media/image1.png[A
+image::ArchitectureDiagram.jpeg[]
 diagram of a customer service,width=449,height=460]
