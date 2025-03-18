@@ -14,7 +14,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 import java.util.Optional;
@@ -89,7 +88,6 @@ class AccountServiceTests {
 
     @Test
     void shouldRetrieveTransactionsForAccount() {
-        Account account = new CurrentAccount(101L, 1L, 500.0);
         Transaction transaction1 = new Transaction();
         transaction1.setId(201L);
         transaction1.setAccountId(101L);

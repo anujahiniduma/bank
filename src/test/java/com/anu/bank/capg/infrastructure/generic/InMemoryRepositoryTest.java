@@ -31,8 +31,8 @@ class InMemoryRepositoryTest {
 
         // Assert
         assertThat(retrievedEntity).isPresent();
-        assertThat(retrievedEntity.get().getId()).isEqualTo(1);
-        assertThat(retrievedEntity.get().getName()).isEqualTo("Test Name");
+        assertThat(retrievedEntity.get().id()).isEqualTo(1);
+        assertThat(retrievedEntity.get().name()).isEqualTo("Test Name");
     }
 
     @Test
@@ -63,35 +63,11 @@ class InMemoryRepositoryTest {
     }
 
     // Test entity with 'id' field
-    static class TestEntity {
-        private Integer id;
-        private String name;
-
-        public TestEntity(Integer id, String name) {
-            this.id = id;
-            this.name = name;
-        }
-
-        public Integer getId() {
-            return id;
-        }
-
-        public String getName() {
-            return name;
-        }
+    record TestEntity(Integer id, String name) {
     }
 
     // Entity without 'id' field (for negative test cases)
-    static class InvalidEntity {
-        private String name;
-
-        public InvalidEntity(String name) {
-            this.name = name;
-        }
-
-        public String getName() {
-            return name;
-        }
+    record InvalidEntity(String name) {
     }
 }
 

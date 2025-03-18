@@ -10,7 +10,6 @@ import com.anu.bank.capg.domain.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Optional;
 
 @Service
@@ -31,7 +30,7 @@ public class AccountService {
 
     public Account createAccount(Long customerId, double initialCredit) {
         Optional<Customer> customerOpt = customerRepository.findById(customerId);
-        if (!customerOpt.isPresent()) {
+        if (customerOpt.isEmpty()) {
             throw new RuntimeException("Customer not found");
         }
         Customer customer = customerOpt.get();
