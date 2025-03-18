@@ -3,7 +3,9 @@ package com.anu.bank.capg.infrastructure.generic;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import java.util.Optional;
+
 import static org.assertj.core.api.Assertions.*;
 
 class InMemoryRepositoryTest {
@@ -29,8 +31,8 @@ class InMemoryRepositoryTest {
 
         // Assert
         assertThat(retrievedEntity).isPresent();
-        assertThat(retrievedEntity.get().getId()).isEqualTo(1);
-        assertThat(retrievedEntity.get().getName()).isEqualTo("Test Name");
+        assertThat(retrievedEntity.get().id()).isEqualTo(1);
+        assertThat(retrievedEntity.get().name()).isEqualTo("Test Name");
     }
 
     @Test
@@ -48,9 +50,7 @@ class InMemoryRepositoryTest {
         TestEntity entity = new TestEntity(null, "Invalid Entity");
 
         // Act & Assert
-        assertThatThrownBy(() -> repository.save(entity))
-                .isInstanceOf(RuntimeException.class)
-                .hasMessageContaining("ID field is null");
+        assertThatThrownBy(() -> repository.save(entity)).isInstanceOf(RuntimeException.class).hasMessageContaining("ID field is null");
     }
 
     @Test
@@ -59,41 +59,15 @@ class InMemoryRepositoryTest {
         InvalidEntity entity = new InvalidEntity("No ID Field");
 
         // Act & Assert
-        assertThatThrownBy(() -> repositoryError.save(entity))
-                .isInstanceOf(RuntimeException.class)
-                .hasMessageContaining("ID field is missing or inaccessible in entity");
+        assertThatThrownBy(() -> repositoryError.save(entity)).isInstanceOf(RuntimeException.class).hasMessageContaining("ID field is missing or inaccessible in entity");
     }
 
     // Test entity with 'id' field
-    static class TestEntity {
-        private Integer id;
-        private String name;
-
-        public TestEntity(Integer id, String name) {
-            this.id = id;
-            this.name = name;
-        }
-
-        public Integer getId() {
-            return id;
-        }
-
-        public String getName() {
-            return name;
-        }
+    record TestEntity(Integer id, String name) {
     }
 
     // Entity without 'id' field (for negative test cases)
-    static class InvalidEntity {
-        private String name;
-
-        public InvalidEntity(String name) {
-            this.name = name;
-        }
-
-        public String getName() {
-            return name;
-        }
+    record InvalidEntity(String name) {
     }
 }
 
