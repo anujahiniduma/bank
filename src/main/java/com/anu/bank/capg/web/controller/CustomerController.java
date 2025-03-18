@@ -12,32 +12,30 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-    @RequestMapping("/api/${api.version}/customers")
-    public class CustomerController {
+@RequestMapping("/api/${api.version}/customers")
+public class CustomerController {
 
-        @Autowired
-        private final AccountService accountService;
+    @Autowired
+    private final AccountService accountService;
 
-        @Autowired
-        private final CustomerRepository customerRepository;
+    @Autowired
+    private final CustomerRepository customerRepository;
 
-        public CustomerController(AccountService accountService,CustomerRepository customerRepository) {
-            this.accountService = accountService;
-            this.customerRepository = customerRepository;
-        }
+    public CustomerController(AccountService accountService, CustomerRepository customerRepository) {
+        this.accountService = accountService;
+        this.customerRepository = customerRepository;
+    }
 
-        @PostMapping("/{customerId}/accounts")
-        public ResponseEntity<Account> createAccount(
-                @PathVariable Long customerId,
-                @RequestBody AccountCreationRequestDTO requestDTO) {
-            return ResponseEntity.ok(accountService.createAccount(customerId, requestDTO.getInitialCredit()));
-        }
+    @PostMapping("/{customerId}/accounts")
+    public ResponseEntity<Account> createAccount(@PathVariable Long customerId, @RequestBody AccountCreationRequestDTO requestDTO) {
+        return ResponseEntity.ok(accountService.createAccount(customerId, requestDTO.getInitialCredit()));
+    }
 
     @GetMapping("/{customerId}")
     public ResponseEntity<Customer> getCustomerDetails(@PathVariable Long customerId) {
         Optional<Customer> customer = customerRepository.findById(customerId);
         return customer.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
-    }
+}
 
 

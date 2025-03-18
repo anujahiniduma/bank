@@ -6,5 +6,6 @@ import com.anu.bank.capg.infrastructure.generic.InMemoryRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class InMemoryCustomerRepository extends InMemoryRepository<Customer, Long> implements CustomerRepository {}
+public class InMemoryCustomerRepository extends InMemoryRepository<Customer, Long> implements CustomerRepository {
+}
 

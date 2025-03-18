@@ -1,6 +1,6 @@
 package com.anu.bank.capg.domain.entity;
 
-public class CurrentAccount extends Account{
+public class CurrentAccount extends Account {
 
     public CurrentAccount(Long id, Long customerId, double balance) {
         super(id, customerId, balance);

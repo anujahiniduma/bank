@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Repository
-public class InMemoryTransactionRepository extends InMemoryRepository<Transaction,Long> implements TransactionRepository {
+public class InMemoryTransactionRepository extends InMemoryRepository<Transaction, Long> implements TransactionRepository {
     @Override
     public List<Transaction> findByAccountId(Long accountId) {
         return storage.values().stream().filter(transaction -> transaction.getAccountId().equals(accountId)).collect(Collectors.toList());

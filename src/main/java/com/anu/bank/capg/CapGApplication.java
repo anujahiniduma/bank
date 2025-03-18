@@ -14,18 +14,19 @@ import java.util.Arrays;
 @ComponentScan(basePackages = "com.anu.bank.capg")
 public class CapGApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(CapGApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(CapGApplication.class, args);
+    }
 
-	@Bean
-	CommandLineRunner loadInitialCustomers(CustomerRepository customerRepository) {
-		return args -> {
-			Customer customer1 = new Customer(1L, "John", "Doe");
-			Customer customer2 = new Customer(2L, "Jane", "Smith");
-			Customer customer3 = new Customer(3L, "Robert", "Brown");
+    @Bean
+    CommandLineRunner loadInitialCustomers(CustomerRepository customerRepository) {
+        return args -> {
+            Customer customer1 = new Customer(1L, "John", "Doe");
+            Customer customer2 = new Customer(2L, "Jane", "Smith");
+            Customer customer3 = new Customer(3L, "Robert", "Brown");
 
-			Arrays.asList(customer1, customer2, customer3).forEach(customerRepository::save);
-		};}
+            Arrays.asList(customer1, customer2, customer3).forEach(customerRepository::save);
+        };
+    }
 
 }

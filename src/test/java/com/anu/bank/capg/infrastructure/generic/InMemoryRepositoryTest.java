@@ -3,7 +3,9 @@ package com.anu.bank.capg.infrastructure.generic;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import java.util.Optional;
+
 import static org.assertj.core.api.Assertions.*;
 
 class InMemoryRepositoryTest {
@@ -48,9 +50,7 @@ class InMemoryRepositoryTest {
         TestEntity entity = new TestEntity(null, "Invalid Entity");
 
         // Act & Assert
-        assertThatThrownBy(() -> repository.save(entity))
-                .isInstanceOf(RuntimeException.class)
-                .hasMessageContaining("ID field is null");
+        assertThatThrownBy(() -> repository.save(entity)).isInstanceOf(RuntimeException.class).hasMessageContaining("ID field is null");
     }
 
     @Test
@@ -59,9 +59,7 @@ class InMemoryRepositoryTest {
         InvalidEntity entity = new InvalidEntity("No ID Field");
 
         // Act & Assert
-        assertThatThrownBy(() -> repositoryError.save(entity))
-                .isInstanceOf(RuntimeException.class)
-                .hasMessageContaining("ID field is missing or inaccessible in entity");
+        assertThatThrownBy(() -> repositoryError.save(entity)).isInstanceOf(RuntimeException.class).hasMessageContaining("ID field is missing or inaccessible in entity");
     }
 
     // Test entity with 'id' field
