@@ -64,15 +64,8 @@ http://localhost:8080/swagger-ui.html
 
 *Account Management*
 
-* *POST* /api/accounts - Create a new account
-* *GET* /api/users/\{customerId} - Retrieve user details including
-balance and transactions
-
-*Transactions*
-
-* *POST* /api/transactions - Create a transaction
-* *GET* /api/transactions/\{accountId} - Get transaction history for an
-account
+* *POST* api/v1/customers/1/accounts - Create a new account
+* *GET* /api/v1/customers/\{customerId} - Retrieve user details including
 
 *Spring Boot Actuator Endpoints*
 
