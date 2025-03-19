@@ -17,7 +17,7 @@ transaction history.
 . *Database*: Stores accounts and transactions. This implementation as
 the in-memory database. But as a future enhancement, any type of a
 database or cloud storage can be used by just introducing an
-implementation of <<Base>> class.
+implementation of BaseRepository interface.
 . *Tests and Verification:* Jococo plugin has been used to verify the
 test coverage. Currently without 80% of test coverage build won’t
 compile.
@@ -38,9 +38,7 @@ Ensure you have the following installed:
 
 To build and run the project using Maven, use the following commands:
 
-mvn clean install
-
-mvn spring-boot:run
+.\mvnw spring-boot:run
 
 *Docker Image Location*
 
@@ -52,7 +50,7 @@ docker pull anujahiniduma/anu:latest
 
 To run the application using Docker:
 
-docker pull your-dockerhub-username/api-project:latest
+docker pull anujahiniduma/api-project:latest
 
 *Swagger Documentation*
 
